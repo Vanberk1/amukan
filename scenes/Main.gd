@@ -2,6 +2,7 @@ extends Node2D
 
 onready var hint : Node2D = $Hint
 onready var tilemap : TileMap = $TileMap 
+onready var character : KinematicBody2D = $Character
 
 func _ready() -> void:
 	pass
@@ -14,6 +15,8 @@ func _process(_delta : float) -> void:
 	if Input.is_action_just_pressed("left_click"):
 		print("tile_pos: ", tile_pos)
 		print("cell: ", cell)
+#		if cell != -1:
+#			character.global_position = tilemap.map_to_world(tile_pos)
 	
 	if cell != -1:
 		hint.show()
