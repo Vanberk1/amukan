@@ -619,11 +619,12 @@ position = Vector2( 96.753, 111.245 )
 position = Vector2( 158.12, 36.8527 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 6 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
 position = Vector2( 188.988, 52.6017 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 6 )
+frame = 1
 playing = true
