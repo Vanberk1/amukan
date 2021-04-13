@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex"
+path="res://.import/bapho-stand.png-40110126cd68067019a3c3da9131e123.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon.png"
-dest_files=[ "res://.import/icon.png-487276ed1e3a0c39cad0279d744ee560.stex" ]
+source_file="res://assets/images/bapho-stand.png"
+dest_files=[ "res://.import/bapho-stand.png-40110126cd68067019a3c3da9131e123.stex" ]
 
 [params]
 
