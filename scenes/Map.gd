@@ -1,19 +1,15 @@
 extends Node2D
 
+signal move_char
+
+var selected_char: Area2D = null
+
 onready var terrain: TileMap = $Terrain
 onready var movement: TileMap = $Movement
 onready var hint: Node2D = $Hint
 
 func _ready():
 	hint.hide()
-
-func _input(event : InputEvent) -> void:
-	var mouse_pos : Vector2 = get_local_mouse_position()
-	if event is InputEventMouseButton:
-		if event.is_action_pressed("left_click"):
-			var tile_pos = terrain.world_to_map(mouse_pos)
-			var cell = terrain.get_cellv(tile_pos)
-			print("click ", mouse_pos, " ", tile_pos, " ", cell)
 
 func _process(_delta : float) -> void:
 	var mouse_pos: Vector2 = get_local_mouse_position()
@@ -25,12 +21,29 @@ func _process(_delta : float) -> void:
 	else:
 		hint.hide()
 
+func move_character(charc: Area2D) -> void:
+	var mouse_pos: Vector2 = get_local_mouse_position()
+	if charc:
+		print("map move character")
+		var tile_pos := movement.world_to_map(mouse_pos)
+		var cell := movement.get_cellv(tile_pos)
+		var char_pos := terrain.world_to_map(charc.position - position)
+#		print(tile_pos, " ", cell, " ", char_pos)
+		if cell != -1 && tile_pos != char_pos:
+			emit_signal("move_char", movement.map_to_world(tile_pos) + position + Vector2(0, 2))
+			movement.clear()
+		else:
+			character_unselected()
+			movement.clear()
+
 func character_selected(charc: Area2D) -> void:
-	var char_pos := terrain.world_to_map(charc.position - position)
+	selected_char = charc
+	var char_pos := terrain.world_to_map(selected_char.position - position)
 	show_character_move_range(char_pos, charc.mov_range)
 
 func character_unselected() -> void:
-	movement.clear()
+	selected_char.unselect()
+	selected_char = null
 
 func show_character_move_range(pos: Vector2, ran: int) -> void:
 	if ran != -1:

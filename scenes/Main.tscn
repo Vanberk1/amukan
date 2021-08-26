@@ -12,8 +12,14 @@ position = Vector2( 160, 90 )
 
 [node name="Characters" type="Node2D" parent="."]
 
-[node name="Character" parent="Characters" instance=ExtResource( 4 )]
+[node name="YSort" type="YSort" parent="Characters"]
+
+[node name="Character" parent="Characters/YSort" instance=ExtResource( 4 )]
 position = Vector2( 128, 60 )
+mov_range = 3
+
+[node name="Character2" parent="Characters/YSort" instance=ExtResource( 4 )]
+position = Vector2( 128, 92 )
 mov_range = 3
 
 [node name="HUD" type="CanvasLayer" parent="."]
@@ -41,3 +47,4 @@ __meta__ = {
 margin_right = 69.0
 margin_bottom = 14.0
 text = "Player turn"
+[connection signal="move_char" from="Map" to="." method="_on_Map_move_char"]
