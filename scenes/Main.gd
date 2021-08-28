@@ -24,7 +24,6 @@ func _on_Cursor_left_click(pos) -> void:
 	print("left click ", pos)
 	var space_state = get_world_2d().direct_space_state
 	var result = space_state.intersect_point(pos, 1, [], 0x7FFFFFFF, true, true)
-	print(result)
 	if result:
 		if selected_character:
 			selected_character.unselect()
