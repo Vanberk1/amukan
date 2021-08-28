@@ -1,9 +1,5 @@
 extends Node2D
 
-signal move_char
-
-var selected_char: Area2D = null
-
 onready var terrain: TileMap = $Terrain
 onready var movement: TileMap = $Movement
 onready var hint: Node2D = $Hint
@@ -21,27 +17,20 @@ func _process(_delta : float) -> void:
 	else:
 		hint.hide()
 
-func move_character(charc: Area2D, pos: Vector2) -> void:
-	if charc:
-		print("map move character")
-		var tile_pos := movement.world_to_map(pos)
-		var cell := movement.get_cellv(tile_pos)
-		var char_pos := terrain.world_to_map(charc.position - position)
-#		print(tile_pos, " ", cell, " ", char_pos)
-		if cell != -1 && tile_pos != char_pos:
-			emit_signal("move_char", movement.map_to_world(tile_pos) + position + Vector2(0, 2))
-		else:
-			character_unselected()
-		clear_movement()
+func move_character(char_pos: Vector2, pos: Vector2) -> Vector2:
+	print("map move character ", pos)
+	var tile_pos := movement.world_to_map(pos - position)
+	var cell := movement.get_cellv(tile_pos)
+	var char_tile := terrain.world_to_map(char_pos - position)
+	print(tile_pos, " ", cell, " ", char_tile)
+	clear_movement()
+	if cell != -1 && tile_pos != char_tile:
+		return movement.map_to_world(tile_pos) + position + Vector2(0, 2)
+	return Vector2.ZERO
 
 func character_selected(charc: Area2D) -> void:
-	selected_char = charc
-	var char_pos := terrain.world_to_map(selected_char.position - position)
+	var char_pos := terrain.world_to_map(charc.position - position)
 	show_character_move_range(char_pos, charc.mov_range)
-
-func character_unselected() -> void:
-	selected_char.unselect()
-	selected_char = null
 
 func show_character_move_range(pos: Vector2, ran: int) -> void:
 	if ran != -1:

@@ -16,6 +16,6 @@ func select() -> void:
 
 func unselect() -> void:
 #	print("unselect ", get_instance_id())
-	animation.frame = 0
 	selected = false
+	animation.frame = 0
 
