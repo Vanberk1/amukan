@@ -9,27 +9,29 @@ onready var characters: Node2D = $Characters/YSort
 
 func _ready() -> void:
 	player_char_count = characters.get_children().size()
-	for c in characters.get_children():
-		c.connect("selected", self, "_on_Character_selected")
-		c.connect("unselected", self, "_on_Character_unselected")
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.is_action_pressed("left_click"):
-			if selected_character:
-				print("click character ", selected_character.get_instance_id())
-				map.move_character(selected_character)
-
-func _on_Character_selected(charc: Area2D) -> void:
-	if selected_character:
-		selected_character.unselect()
-	selected_character = charc
-	map.character_selected(charc)
+#	for c in characters.get_children():
+#		c.connect("selected", self, "_on_Character_selected")
+#		c.connect("unselected", self, "_on_Character_unselected")
 
 func _on_Character_unselected() -> void:
 	selected_character = null
 
-func _on_Map_move_char(pos: Vector2):
+func _on_Map_move_char(pos: Vector2) -> void:
 	print("char move to ", pos)
 	selected_character.position = pos
 
+func _on_Cursor_left_click(pos) -> void:
+	print("left click ", pos)
+	var space_state = get_world_2d().direct_space_state
+	var result = space_state.intersect_point(pos, 1, [], 0x7FFFFFFF, true, true)
+	print(result)
+	if result:
+		if selected_character:
+			selected_character.unselect()
+			map.clear_movement()
+		selected_character = result[0].collider
+		selected_character.select()
+		map.character_selected(selected_character)
+	else:
+		if selected_character:
+			map.move_character(selected_character, pos)

@@ -21,20 +21,18 @@ func _process(_delta : float) -> void:
 	else:
 		hint.hide()
 
-func move_character(charc: Area2D) -> void:
-	var mouse_pos: Vector2 = get_local_mouse_position()
+func move_character(charc: Area2D, pos: Vector2) -> void:
 	if charc:
 		print("map move character")
-		var tile_pos := movement.world_to_map(mouse_pos)
+		var tile_pos := movement.world_to_map(pos)
 		var cell := movement.get_cellv(tile_pos)
 		var char_pos := terrain.world_to_map(charc.position - position)
 #		print(tile_pos, " ", cell, " ", char_pos)
 		if cell != -1 && tile_pos != char_pos:
 			emit_signal("move_char", movement.map_to_world(tile_pos) + position + Vector2(0, 2))
-			movement.clear()
 		else:
 			character_unselected()
-			movement.clear()
+		clear_movement()
 
 func character_selected(charc: Area2D) -> void:
 	selected_char = charc
@@ -54,8 +52,8 @@ func show_character_move_range(pos: Vector2, ran: int) -> void:
 					if abs(x) + abs(y) <= ran:
 						movement.set_cellv(pos + Vector2(x, y), 1)
 
-
-
+func clear_movement():
+	movement.clear()
 
 
 
