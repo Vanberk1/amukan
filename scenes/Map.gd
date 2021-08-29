@@ -1,5 +1,8 @@
 extends Node2D
 
+var filled_tiles := {}
+var ents_positions := {}
+
 onready var terrain: TileMap = $Terrain
 onready var movement: TileMap = $Movement
 onready var hint: Node2D = $Hint
@@ -17,29 +20,45 @@ func _process(_delta : float) -> void:
 	else:
 		hint.hide()
 
-func move_character(char_pos: Vector2, pos: Vector2) -> Vector2:
-	print("map move character ", pos)
-	var tile_pos := movement.world_to_map(pos - position)
+func set_tiles(entities: Array) -> void:
+	for ent in entities:
+		update_tile(ent.position, ent.get_instance_id())
+
+func update_tile(ent_pos: Vector2, ent_id: int):
+	var tile_pos := terrain.world_to_map(ent_pos - position)
+	if ents_positions.has(ent_id):
+		var old_pos = ents_positions[ent_id]
+		filled_tiles.erase(old_pos)
+	filled_tiles[tile_pos] = ent_id
+	ents_positions[ent_id] = tile_pos
+
+func move_character(ent_pos: Vector2, new_pos: Vector2) -> Vector2:
+	print("map move character ", new_pos)
+	var ent_tile := terrain.world_to_map(ent_pos - position)
+	var tile_pos := movement.world_to_map(new_pos - position)
 	var cell := movement.get_cellv(tile_pos)
-	var char_tile := terrain.world_to_map(char_pos - position)
-	print(tile_pos, " ", cell, " ", char_tile)
+	print(ent_tile, " ", cell, " ", tile_pos)
 	clear_movement()
-	if cell != -1 && tile_pos != char_tile:
+	if cell != -1 && tile_pos != ent_tile:
+		update_tile(tile_pos, filled_tiles[ent_tile])
 		return movement.map_to_world(tile_pos) + position + Vector2(0, 2)
 	return Vector2.ZERO
 
-func character_selected(charc: Area2D) -> void:
-	var char_pos := terrain.world_to_map(charc.position - position)
-	show_character_move_range(char_pos, charc.mov_range)
+func entity_selected(entity: Area2D) -> void:
+	var ent_pos := terrain.world_to_map(entity.position - position)
+	show_entity_move_range(ent_pos, entity.mov_range)
 
-func show_character_move_range(pos: Vector2, ran: int) -> void:
+func show_entity_move_range(pos: Vector2, ran: int) -> void:
+	print(filled_tiles)
+	print(ents_positions)
 	if ran != -1:
 		for x in range(-ran, ran + 1):
 			for y in range(-ran, ran + 1):
-				var terrain_cell = terrain.get_cellv(pos + Vector2(x, y))
-				if terrain_cell != -1:
-					if abs(x) + abs(y) <= ran:
-						movement.set_cellv(pos + Vector2(x, y), 1)
+				if abs(x) + abs(y) <= ran:
+					var new_pos = pos + Vector2(x, y)
+					var terrain_cell = terrain.get_cellv(new_pos)
+					if terrain_cell != -1 && !filled_tiles.has(new_pos):
+						movement.set_cellv(new_pos, 1)
 
 func clear_movement():
 	movement.clear()
