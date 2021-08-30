@@ -50,5 +50,4 @@ __meta__ = {
 margin_right = 69.0
 margin_bottom = 14.0
 text = "Player turn"
-
 [connection signal="left_click" from="Cursor" to="." method="_on_Cursor_left_click"]

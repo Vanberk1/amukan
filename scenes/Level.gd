@@ -25,6 +25,6 @@ func _on_Cursor_left_click(pos: Vector2) -> void:
 		map.entity_selected(selected_character)
 	else:
 		if selected_character:
-			var new_pos = map.move_character(selected_character.position, pos)
-			if new_pos != Vector2.ZERO:
+			if map.check_movement(pos):
+				var new_pos = map.move_character(selected_character.position, pos)
 				selected_character.position = new_pos
