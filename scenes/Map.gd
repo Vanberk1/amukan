@@ -27,6 +27,7 @@ func set_tiles(entities: Array) -> void:
 
 func update_tile(ent_tile: Vector2, ent_id: int):
 	if ents_pos.has(ent_id):
+# warning-ignore:return_value_discarded
 		filled_tiles.erase(ents_pos[ent_id])
 	filled_tiles[ent_tile] = ent_id
 	ents_pos[ent_id] = ent_tile

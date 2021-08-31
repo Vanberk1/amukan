@@ -57,3 +57,5 @@ shape = SubResource( 6 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="Stats" type="Node" parent="."]
