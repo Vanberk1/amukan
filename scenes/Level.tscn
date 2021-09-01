@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/Level.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Map.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/HUD/CharacterStats.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/HUD/HUD.tscn" type="PackedScene" id=5]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 2 )
@@ -27,19 +27,6 @@ mov_range = 3
 [node name="Cursor" parent="." instance=ExtResource( 1 )]
 position = Vector2( 160.509, 77.6057 )
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" parent="." instance=ExtResource( 5 )]
 
-[node name="GUI" type="Control" parent="HUD"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = -5.0
-mouse_filter = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CharacterStats" parent="HUD/GUI" instance=ExtResource( 5 )]
 [connection signal="left_click" from="Cursor" to="." method="_on_Cursor_left_click"]
