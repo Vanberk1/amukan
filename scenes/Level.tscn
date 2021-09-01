@@ -18,15 +18,31 @@ position = Vector2( 160, 90 )
 
 [node name="Character" parent="Characters/YSort" instance=ExtResource( 4 )]
 position = Vector2( 128, 60 )
+character_name = "char 1"
 mov_range = 3
+init_stats = {
+"dex": 1,
+"int": 1,
+"str": 1,
+"vit": 1
+}
 
 [node name="Character2" parent="Characters/YSort" instance=ExtResource( 4 )]
 position = Vector2( 128, 92 )
+character_name = "char 2"
 mov_range = 3
-
-[node name="Cursor" parent="." instance=ExtResource( 1 )]
-position = Vector2( 160.509, 77.6057 )
+init_stats = {
+"dex": 2,
+"int": 2,
+"str": 2,
+"vit": 2
+}
 
 [node name="HUD" parent="." instance=ExtResource( 5 )]
 
-[connection signal="left_click" from="Cursor" to="." method="_on_Cursor_left_click"]
+[node name="CursorCanvas" type="CanvasLayer" parent="."]
+
+[node name="Cursor" parent="CursorCanvas" instance=ExtResource( 1 )]
+position = Vector2( 160.509, 77.6057 )
+z_index = 1
+[connection signal="left_click" from="CursorCanvas/Cursor" to="." method="_on_Cursor_left_click"]
