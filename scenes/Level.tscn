@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Cursor.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Level.gd" type="Script" id=2]
 [ext_resource path="res://scenes/Map.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Character.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/HUD/CharacterStats.tscn" type="PackedScene" id=5]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 2 )
@@ -40,14 +41,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/GUI"]
-anchor_right = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Turn" type="Label" parent="HUD/GUI/HBoxContainer"]
-margin_right = 69.0
-margin_bottom = 14.0
-text = "Player turn"
+[node name="CharacterStats" parent="HUD/GUI" instance=ExtResource( 5 )]
 [connection signal="left_click" from="Cursor" to="." method="_on_Cursor_left_click"]
