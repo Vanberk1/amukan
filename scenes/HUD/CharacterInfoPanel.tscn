@@ -23,8 +23,9 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
+margin_top = 2.0
 margin_right = -4.0
-margin_bottom = 16.0
+margin_bottom = 18.0
 size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -32,7 +33,7 @@ __meta__ = {
 
 [node name="CharacterNameLabel" type="Label" parent="VBoxContainer"]
 margin_right = 61.0
-margin_bottom = 7.0
+margin_bottom = 4.0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 1 )
 text = "name"
@@ -40,10 +41,32 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="StrLabel" type="Label" parent="VBoxContainer"]
-margin_top = 11.0
+[node name="HPLabel" type="Label" parent="VBoxContainer"]
+margin_top = 8.0
 margin_right = 61.0
-margin_bottom = 18.0
+margin_bottom = 12.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+text = "HP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SPLabel" type="Label" parent="VBoxContainer"]
+margin_top = 16.0
+margin_right = 61.0
+margin_bottom = 20.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+text = "SP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StrLabel" type="Label" parent="VBoxContainer"]
+margin_top = 24.0
+margin_right = 61.0
+margin_bottom = 28.0
 size_flags_vertical = 0
 size_flags_stretch_ratio = 0.0
 custom_fonts/font = ExtResource( 1 )
@@ -53,24 +76,25 @@ __meta__ = {
 }
 
 [node name="VitLabel" type="Label" parent="VBoxContainer"]
-margin_top = 22.0
+margin_top = 32.0
 margin_right = 61.0
-margin_bottom = 29.0
+margin_bottom = 36.0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 1 )
 text = "vit:"
 
 [node name="IntLabel" type="Label" parent="VBoxContainer"]
-margin_top = 33.0
+margin_top = 40.0
 margin_right = 61.0
-margin_bottom = 40.0
+margin_bottom = 44.0
+size_flags_vertical = 0
 custom_fonts/font = ExtResource( 1 )
 text = "int:"
 
 [node name="DexLabel" type="Label" parent="VBoxContainer"]
-margin_top = 44.0
+margin_top = 48.0
 margin_right = 61.0
-margin_bottom = 51.0
+margin_bottom = 52.0
 size_flags_vertical = 0
 custom_fonts/font = ExtResource( 1 )
 text = "dex:"

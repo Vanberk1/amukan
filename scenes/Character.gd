@@ -4,6 +4,8 @@ extends Area2D
 export(String) var character_name
 export var mov_range := -1
 export(Dictionary) var init_stats := {
+	"max_hp": 0,
+	"max_sp": 0,
 	"str": 0,
 	"vit": 0,
 	"int": 0,
