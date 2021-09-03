@@ -1,13 +1,16 @@
 extends CanvasLayer
 
-onready var character_info_panel := $GUI/CharacterInfoPanel
+onready var character_panel := $GUI/CharacterPanel
 
 func _ready() -> void:
-	character_info_panel.hide()
+	character_panel.hide()
 
 func show_character_info(character: Area2D) -> void:
-	character_info_panel.show()
-	character_info_panel.set_character_info(character.unit_name, character.stats)
+	var info_panel = character_panel.get_node("CharacterInfoPanel")
+	var actions_panel = character_panel.get_node("CharacterActionsPanel")
+	info_panel.set_character_info(character.unit_name, character.stats)
+#	actions_panel.set_character_actions(character.actions)
+	character_panel.show()
 
 func hide_character_info() -> void:
-	character_info_panel.hide()
+	character_panel.hide()

@@ -1,0 +1,71 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/thaleah_fat_7.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/HUD/CharacterActionsPanel.gd" type="Script" id=2]
+
+[node name="CharacterActionsPanel" type="Control"]
+margin_right = 157.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_left = 7.0
+margin_top = 15.0
+margin_right = 150.0
+margin_bottom = 25.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionBtn0" type="Button" parent="CenterContainer/HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 10.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+disabled = true
+text = "Action 1"
+
+[node name="ActionBtn1" type="Button" parent="CenterContainer/HBoxContainer"]
+margin_left = 36.0
+margin_right = 69.0
+margin_bottom = 10.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+disabled = true
+text = "Action 2"
+
+[node name="ActionBtn2" type="Button" parent="CenterContainer/HBoxContainer"]
+margin_left = 73.0
+margin_right = 106.0
+margin_bottom = 10.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+disabled = true
+text = "Action 3"
+
+[node name="ActionBtn3" type="Button" parent="CenterContainer/HBoxContainer"]
+margin_left = 110.0
+margin_right = 143.0
+margin_bottom = 10.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 1 )
+disabled = true
+text = "Action 4"
