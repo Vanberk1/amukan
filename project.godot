@@ -9,19 +9,31 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Action",
+"language": "GDScript",
+"path": "res://scenes/Character/Actions/Action.gd"
+}, {
 "base": "Resource",
 "class": "Stats",
 "language": "GDScript",
-"path": "res://scenes/Stats.gd"
+"path": "res://scenes/Character/Stats.gd"
+}, {
+"base": "Area2D",
+"class": "Unit",
+"language": "GDScript",
+"path": "res://scenes/Character/Unit.gd"
 } ]
 _global_script_class_icons={
-"Stats": ""
+"Action": "",
+"Stats": "",
+"Unit": ""
 }
 
 [application]
 
 config/name="amukan"
-run/main_scene="res://scenes/Level.tscn"
+run/main_scene="res://scenes/Level/Level.tscn"
 config/icon="res://icon.png"
 
 [display]

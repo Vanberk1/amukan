@@ -1,7 +1,9 @@
 extends Area2D
 
+class_name Unit
+
 # Si mov_range es igual a -1 el personaje no puede moverse
-export(String) var character_name
+export(String) var unit_name
 export var mov_range := -1
 export(Dictionary) var init_stats := {
 	"max_hp": 0,
@@ -33,9 +35,3 @@ func unselect() -> void:
 #	print("unselect ", get_instance_id())
 	selected = false
 	animation.frame = 0
-
-func set_stats(new_stats: Dictionary):
-	stats.strength = new_stats["str"]
-	stats.vitality = new_stats["vit"]
-	stats.intelligence = new_stats["int"]
-	stats.deterity = new_stats["dex"]

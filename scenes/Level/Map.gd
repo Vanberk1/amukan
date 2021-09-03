@@ -40,10 +40,8 @@ func check_movement(new_pos: Vector2) -> bool:
 	return false
 
 func move_character(ent_pos: Vector2, new_pos: Vector2) -> Vector2:
-	print("map move character ", new_pos)
 	var ent_tile := terrain.world_to_map(ent_pos - position)
 	var new_tile := terrain.world_to_map(new_pos - position)
-	print(new_tile)
 	clear_movement()
 	update_tile(new_tile, filled_tiles[ent_tile])
 	return movement.map_to_world(new_tile) + position + Vector2(0, 2)
@@ -53,7 +51,6 @@ func entity_selected(entity: Area2D) -> void:
 	show_entity_move_range(ent_pos, entity.mov_range)
 
 func show_entity_move_range(pos: Vector2, ran: int) -> void:
-	print(filled_tiles)
 	if ran != -1:
 		for x in range(-ran, ran + 1):
 			for y in range(-ran, ran + 1):
