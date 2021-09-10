@@ -29,6 +29,12 @@ __meta__ = {
 
 [node name="CharacterInfoPanel" parent="GUI/CharacterPanel" instance=ExtResource( 1 )]
 
+[node name="CharacterInfoPanel2" parent="GUI/CharacterPanel" instance=ExtResource( 1 )]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -69.0
+margin_right = 0.0
+
 [node name="CharacterActionsPanel" parent="GUI/CharacterPanel" instance=ExtResource( 3 )]
 anchor_top = 1.0
 anchor_bottom = 1.0

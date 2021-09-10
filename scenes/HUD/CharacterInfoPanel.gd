@@ -1,5 +1,7 @@
 extends Control
 
+var is_visible := false
+
 onready var name_label := $VBoxContainer/CharacterNameLabel
 onready var str_label := $VBoxContainer/StrLabel
 onready var hp_label := $VBoxContainer/HPLabel
@@ -16,3 +18,7 @@ func set_character_info(char_name: String, char_stats: Resource):
 	vit_label.text = "vit: " + str(char_stats.vitality)
 	int_label.text = "int: " + str(char_stats.intelligence)
 	dex_label.text = "dex: " + str(char_stats.dexterity)
+	is_visible = true
+
+func hide():
+	is_visible = false

@@ -18,6 +18,7 @@ position = Vector2( 160, 90 )
 
 [node name="Character" parent="Characters/YSort" instance=ExtResource( 4 )]
 position = Vector2( 128, 60 )
+unit_name = "char 1"
 mov_range = 3
 init_stats = {
 "dex": 2,
@@ -30,6 +31,7 @@ init_stats = {
 
 [node name="Character2" parent="Characters/YSort" instance=ExtResource( 4 )]
 position = Vector2( 128, 92 )
+unit_name = "char 2"
 mov_range = 3
 init_stats = {
 "dex": 1,
